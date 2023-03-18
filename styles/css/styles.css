@@ -4,8 +4,10 @@
 
 #gallery{
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  /* flex-direction: row; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
 }
 
 #galleryContent{
@@ -15,7 +17,15 @@
   border-radius: 10px;
   color: white;
   font-family: 'Courier New', Courier, monospace;
-  width: 65%;
+  width: 65vw;
+  height: 20vh;
+}
+
+.galleryRows{
+  display: flex;
+  /* flex-direction: row; */
+  flex-direction: row;
+  align-items: center;
 }
 
 #galleryContent div{
@@ -30,6 +40,10 @@
   display: flex;
   flex-direction: column;
   margin: 2rem 2rem;
+}
+
+.arrow{
+  cursor: pointer;
 }
 
 

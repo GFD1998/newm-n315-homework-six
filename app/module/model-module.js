@@ -19,6 +19,19 @@ export default class Model{
     </div>
     `;
 
+
+        homeContent = `
+    <div id="banner">
+        <img src="assets/images/homeBanner.jpg" />
+        <h2 style="text-align: center;">Form Examples</h2>
+    </div>
+    <div>
+        <p style="text-align: center;padding: 2rem;">
+            Welcome to Jurassic Park Laboratories! We specialize in genetic modification and enhancement, bringing creatures of the past back to life!
+        </p>
+    </div>
+    `;
+
     createContent = `
     <div class="inputForm">
         <form id="inputSection" action="./server/processsignup.php" method="POST">
@@ -111,6 +124,21 @@ export default class Model{
 
         </form>
 
+    </div>
+    `;
+
+
+    galleryPage = `
+    <div id="gallery">
+        <!-- <div id="leftArrow" class="arrow">&#8592;</div> -->
+        <div id="galleryContent">
+            <div id="galleryTitle">Monster Hunter Rise</div>
+            <img id="galleryImage" src="assets/images/mhrise.jpg" />
+            <div id="galleryPublisher">Nintendo</div>
+            <div id="galleryGenre">Fighting</div>
+            <div id="galleryPlatforms">Switch/PS4/XBOX/PC</div>
+        </div>
+        <!-- <div id="rightArrow" class="arrow">&#8594;</div> -->
     </div>
     `;
 

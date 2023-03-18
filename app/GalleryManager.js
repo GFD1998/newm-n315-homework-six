@@ -1,48 +1,127 @@
-export default class SPAManager{
+export default class GalleryManager{
 
 
-    gameData;
+    objectData;
+    model;
     dataCounter = 0;
-    constructor(data){
-
-        this.gameData = data;
-
-        $("#leftArrow").on("click", e => {
-            this.cycleContent("left",1);
-        });
-
-        $("#rightArrow").on("click", e => {
-            this.cycleContent("right",1);
-        });
+    constructor(data, model){
+        this.objectData = data;
+        this.model = model;
+        if($(".arrow").length == 0){
+            this.displayFullGallery();
+        }else{
+            $("#leftArrow").on("click", e => {
+                this.cycleContent("left",1);
+            });
+    
+            $("#rightArrow").on("click", e => {
+                this.cycleContent("right",1);
+            });
+        }
     }
 
 
     cycleContent(direction, num){
         switch(direction){
             case "left":
-                this.dataCounter--;
+                this.dataCounter -= num;
                 if(this.dataCounter < 0){
                     this.dataCounter = 9;
                 }
-                this.updateGallery();
+                this.updateGallery(200);
                 break;
             case "right":
-                this.dataCounter++;
+                this.dataCounter += num;
                 if(this.dataCounter > 9){
                     this.dataCounter = 0;
                 }
-                this.updateGallery();
+                this.updateGallery(200);
                 break;
             default:
                 break;
         }
     }
 
-    updateGallery(){
-        $("#galleryTitle").html(this.gameData["GameObjects"][this.dataCounter]["title"]);
-        $("#galleryImage").attr("src", `${this.gameData["GameObjects"][this.dataCounter]["image"]}`);
-        $("#galleryPublisher").html(this.gameData["GameObjects"][this.dataCounter]["publisher"]);
-        $("#galleryGenre").html(this.gameData["GameObjects"][this.dataCounter]["genre"]);
-        $("#galleryPlatforms").html(this.gameData["GameObjects"][this.dataCounter]["platforms"]);
+    updateGallery(i){
+        // $("#galleryTitle").html(this.objectData["GameObjects"][this.dataCounter]["title"]);
+        // $("#galleryImage").attr("src", `${this.objectData["GameObjects"][this.dataCounter]["image"]}`);
+        // $("#galleryPublisher").html(this.objectData["GameObjects"][this.dataCounter]["publisher"]);
+        // $("#galleryGenre").html(this.objectData["GameObjects"][this.dataCounter]["genre"]);
+        // $("#galleryPlatforms").html(this.objectData["GameObjects"][this.dataCounter]["platforms"]);
+        if(i == 200){
+            $("#galleryTitle").html(this.objectData["CampObjects"][this.dataCounter]["title"]);
+            $("#galleryImage").attr("src", `${this.objectData["CampObjects"][this.dataCounter]["image"]}`);
+            $("#galleryPublisher").html(this.objectData["CampObjects"][this.dataCounter]["publisher"]);
+            $("#galleryGenre").html(this.objectData["CampObjects"][this.dataCounter]["genre"]);
+            $("#galleryPlatforms").html(this.objectData["CampObjects"][this.dataCounter]["platforms"]);
+        }else{
+            $("#mainContainer").html(this.model.galleryPage);
+            $("#galleryTitle").html(this.objectData["CampObjects"][i]["title"]);
+            $("#galleryImage").attr("src", `${this.objectData["CampObjects"][i]["image"]}`);
+            $("#galleryPublisher").html(this.objectData["CampObjects"][i]["publisher"]);
+            $("#galleryGenre").html(this.objectData["CampObjects"][i]["genre"]);
+            $("#galleryPlatforms").html(this.objectData["CampObjects"][i]["platforms"]);
+        }
+    }
+
+
+
+    displayFullGallery(){
+        var galleryString = '';
+        for(var i = 0;i < 10;i++){
+            if(i == 0){
+                galleryString += `<div class="galleryRows">`;
+            }
+            galleryString += `
+            <div id="galleryContent${i}">
+                <div id="galleryTitle${i}">Monster Hunter Rise</div>
+                <img id="galleryImage${i}" src="assets/images/mhrise.jpg" />
+                <div id="galleryPublisher${i}">Nintendo</div>
+                <div id="galleryGenre${i}">Fighting</div>
+                <div id="galleryPlatforms${i}">Switch/PS4/XBOX/PC</div>
+            </div>
+            `;
+            if(i%3 == 2){
+                galleryString += `</div><div class="galleryRows">`;
+            }
+
+            if(i == 9){
+                galleryString += `</div>`; 
+            }
+            // $(`#galleryTitle${i}`).html(this.objectData["CampObjects"][i]["title"]);
+            // $(`#galleryImage${i}`).attr("src", `${this.objectData["CampObjects"][i]["image"]}`);
+            // $(`#galleryPublisher${i}`).html(this.objectData["CampObjects"][i]["publisher"]);
+            // $(`#galleryGenre${i}`).html(this.objectData["CampObjects"][i]["genre"]);
+            // $(`#galleryPlatforms${i}`).html(this.objectData["CampObjects"][i]["platforms"]);
+            // this.setGalleryContentStyles(i);
+        }
+        $(`#gallery`).append(galleryString);
+        for(var i = 0;i < 10;i++){
+            $(`#galleryTitle${i}`).html(this.objectData["CampObjects"][i]["title"]);
+            $(`#galleryImage${i}`).attr("src", `${this.objectData["CampObjects"][i]["image"]}`);
+            $(`#galleryPublisher${i}`).html(this.objectData["CampObjects"][i]["publisher"]);
+            $(`#galleryGenre${i}`).html(this.objectData["CampObjects"][i]["genre"]);
+            $(`#galleryPlatforms${i}`).html(this.objectData["CampObjects"][i]["platforms"]);
+            this.setGalleryContentStyles(i);
+        }
+    }
+
+
+
+    setGalleryContentStyles(i){
+        $(`#galleryContent${i}`).css("text-align", "center");
+        $(`#galleryContent${i}`).css("background-color", "grey");
+        $(`#galleryContent${i}`).css("padding", "1rem");
+        $(`#galleryContent${i}`).css("border-radius", "10px");
+        $(`#galleryContent${i}`).css("color", "#FFFFFF");
+        $(`#galleryContent${i}`).css("font-family", "'Courier New', Courier, monospace");
+        $(`#galleryContent${i}`).css("width", "65%");
+        $(`#galleryContent${i}`).css("flex", "33%");
+        $(`#galleryContent${i}`).css("margin", "5%");
+        $(`#galleryContent${i}`).css("padding", "5%");
+        $(`#galleryContent${i}`).css("cursor", "pointer");
+        $(`#galleryContent${i}`).on("click", e => {
+            this.updateGallery(i);
+        });
     }
 }
