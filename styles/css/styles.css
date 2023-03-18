@@ -42,6 +42,17 @@
   margin: 2rem 2rem;
 }
 
+#galleryContentSingle{
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 2rem;
+  text-align: center;
+}
+
+#galleryContentSingle div{
+  margin:1rem 0;
+}
+
 .arrow{
   cursor: pointer;
 }

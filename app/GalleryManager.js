@@ -43,24 +43,24 @@ export default class GalleryManager{
     }
 
     updateGallery(i){
-        // $("#galleryTitle").html(this.objectData["GameObjects"][this.dataCounter]["title"]);
+        // $("#galleryTitle").html(this.objectData["GameObjects"][this.dataCounter]["product"]);
         // $("#galleryImage").attr("src", `${this.objectData["GameObjects"][this.dataCounter]["image"]}`);
-        // $("#galleryPublisher").html(this.objectData["GameObjects"][this.dataCounter]["publisher"]);
-        // $("#galleryGenre").html(this.objectData["GameObjects"][this.dataCounter]["genre"]);
-        // $("#galleryPlatforms").html(this.objectData["GameObjects"][this.dataCounter]["platforms"]);
+        // $("#galleryPublisher").html(this.objectData["GameObjects"][this.dataCounter]["distributor"]);
+        // $("#galleryGenre").html(this.objectData["GameObjects"][this.dataCounter]["type"]);
+        // $("#galleryPlatforms").html(this.objectData["GameObjects"][this.dataCounter]["price"]);
         if(i == 200){
-            $("#galleryTitle").html(this.objectData["CampObjects"][this.dataCounter]["title"]);
+            $("#galleryTitle").html(this.objectData["CampObjects"][this.dataCounter]["product"]);
             $("#galleryImage").attr("src", `${this.objectData["CampObjects"][this.dataCounter]["image"]}`);
-            $("#galleryPublisher").html(this.objectData["CampObjects"][this.dataCounter]["publisher"]);
-            $("#galleryGenre").html(this.objectData["CampObjects"][this.dataCounter]["genre"]);
-            $("#galleryPlatforms").html(this.objectData["CampObjects"][this.dataCounter]["platforms"]);
+            $("#galleryPublisher").html(this.objectData["CampObjects"][this.dataCounter]["distributor"]);
+            $("#galleryGenre").html(this.objectData["CampObjects"][this.dataCounter]["type"]);
+            $("#galleryPlatforms").html(this.objectData["CampObjects"][this.dataCounter]["price"]);
         }else{
             $("#mainContainer").html(this.model.galleryPage);
-            $("#galleryTitle").html(this.objectData["CampObjects"][i]["title"]);
+            $("#galleryTitle").html(this.objectData["CampObjects"][i]["product"]);
             $("#galleryImage").attr("src", `${this.objectData["CampObjects"][i]["image"]}`);
-            $("#galleryPublisher").html(this.objectData["CampObjects"][i]["publisher"]);
-            $("#galleryGenre").html(this.objectData["CampObjects"][i]["genre"]);
-            $("#galleryPlatforms").html(this.objectData["CampObjects"][i]["platforms"]);
+            $("#galleryPublisher").html(this.objectData["CampObjects"][i]["distributor"]);
+            $("#galleryGenre").html(this.objectData["CampObjects"][i]["type"]);
+            $("#galleryPlatforms").html(this.objectData["CampObjects"][i]["price"]);
         }
     }
 
@@ -88,20 +88,20 @@ export default class GalleryManager{
             if(i == 9){
                 galleryString += `</div>`; 
             }
-            // $(`#galleryTitle${i}`).html(this.objectData["CampObjects"][i]["title"]);
+            // $(`#galleryTitle${i}`).html(this.objectData["CampObjects"][i]["product"]);
             // $(`#galleryImage${i}`).attr("src", `${this.objectData["CampObjects"][i]["image"]}`);
-            // $(`#galleryPublisher${i}`).html(this.objectData["CampObjects"][i]["publisher"]);
-            // $(`#galleryGenre${i}`).html(this.objectData["CampObjects"][i]["genre"]);
-            // $(`#galleryPlatforms${i}`).html(this.objectData["CampObjects"][i]["platforms"]);
+            // $(`#galleryPublisher${i}`).html(this.objectData["CampObjects"][i]["distributor"]);
+            // $(`#galleryGenre${i}`).html(this.objectData["CampObjects"][i]["type"]);
+            // $(`#galleryPlatforms${i}`).html(this.objectData["CampObjects"][i]["price"]);
             // this.setGalleryContentStyles(i);
         }
         $(`#gallery`).append(galleryString);
         for(var i = 0;i < 10;i++){
-            $(`#galleryTitle${i}`).html(this.objectData["CampObjects"][i]["title"]);
+            $(`#galleryTitle${i}`).html(this.objectData["CampObjects"][i]["product"]);
             $(`#galleryImage${i}`).attr("src", `${this.objectData["CampObjects"][i]["image"]}`);
-            $(`#galleryPublisher${i}`).html(this.objectData["CampObjects"][i]["publisher"]);
-            $(`#galleryGenre${i}`).html(this.objectData["CampObjects"][i]["genre"]);
-            $(`#galleryPlatforms${i}`).html(this.objectData["CampObjects"][i]["platforms"]);
+            $(`#galleryPublisher${i}`).html(this.objectData["CampObjects"][i]["distributor"]);
+            $(`#galleryGenre${i}`).html(this.objectData["CampObjects"][i]["type"]);
+            $(`#galleryPlatforms${i}`).html(this.objectData["CampObjects"][i]["price"]);
             this.setGalleryContentStyles(i);
         }
     }
